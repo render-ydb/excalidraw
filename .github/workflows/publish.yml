@@ -62,8 +62,7 @@ jobs:
             # 切换到部署目录
             cd /opt/1panel/apps/openresty/openresty/www/sites
 
-
             # 解压新部署包 移除两层目录结构
             tar -xzvf source.tar.gz --strip-components=2 excalidraw
             # 清理临时文件（此时已无须单独删除旧版本文件）
-            rm source.tar.gz
+            # rm source.tar.gz
