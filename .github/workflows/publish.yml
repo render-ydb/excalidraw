@@ -60,11 +60,11 @@ jobs:
           password: ${{ secrets.SERVER_PASSWD }}
           script: |
             # 切换到部署目录
-            cd /apps/excalidraw
+            cd /opt/1panel/apps/openresty/openresty/www/sites/
 
 
-            # 解压新部署包
-            tar -xzvf source.tar.gz
-
+            # 解压新部署包 移除两层目录结构
+            tar -xzvf --strip-components=2 source.tar.gz
+             mv build re-site
             # 清理临时文件（此时已无须单独删除旧版本文件）
             rm source.tar.gz
