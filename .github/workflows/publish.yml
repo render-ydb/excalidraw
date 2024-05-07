@@ -41,7 +41,7 @@ jobs:
             cd /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
 
             # 清理当前目录下所有文件及子目录
-            rm -rf excalidraw-site
+            rm -rf index
 
       - name: Upload deployment package
         uses: appleboy/scp-action@master
@@ -65,5 +65,5 @@ jobs:
             # 解压新部署包 移除两层目录结构
             tar -xzvf source.tar.gz --strip-components=1 excalidraw-app/build
             # 清理临时文件（此时已无须单独删除旧版本文件）
-            mv build excalidraw-site
+            mv build index
             rm source.tar.gz
