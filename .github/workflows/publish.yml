@@ -64,7 +64,7 @@ jobs:
 
 
             # 解压新部署包 移除两层目录结构
-            tar -xzvf  source.tar.gz
-             mv build re-site
+            tar -xzvf source.tar.gz --strip-components=2 excalidraw/excalidraw-app/build
+            mv build excalidraw
             # 清理临时文件（此时已无须单独删除旧版本文件）
             rm source.tar.gz
