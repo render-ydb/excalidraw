@@ -32,13 +32,13 @@ jobs:
           password: ${{ secrets.SERVER_PASSWD }}
           script: |
             # 创建目标部署目录（如果不存在）
-            mkdir -p /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
+            mkdir -p /opt/1panel/apps/openresty/openresty/www/sites
 
             #
-            chmod 755 /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
+            chmod 755 /opt/1panel/apps/openresty/openresty/www/sites
 
             # 切换到部署目录
-            cd /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
+            cd /opt/1panel/apps/openresty/openresty/www/sites
 
             # 清理当前目录下所有文件及子目录
             rm -rf ./*
@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWD }}
           source: source.tar.gz
-          target: /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
+          target: /opt/1panel/apps/openresty/openresty/www/sites
 
       - name: SSH to server and deploy
         uses: appleboy/ssh-action@master
@@ -60,11 +60,11 @@ jobs:
           password: ${{ secrets.SERVER_PASSWD }}
           script: |
             # 切换到部署目录
-            cd /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
+            cd /opt/1panel/apps/openresty/openresty/www/sites
 
 
             # 解压新部署包 移除两层目录结构
-            tar -xzvf source.tar.gz
-            mv build excalidraw
+            tar -xzvf source.tar.gz --strip-components=2 excalidraw/excalidraw-app/build
+            # mv build excalidraw
             # 清理临时文件（此时已无须单独删除旧版本文件）
             rm source.tar.gz
