@@ -32,13 +32,13 @@ jobs:
           password: ${{ secrets.SERVER_PASSWD }}
           script: |
             # 创建目标部署目录（如果不存在）
-            mkdir -p /apps/excalidraw
+            mkdir -p /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
 
             #
-            chmod 755 /apps/excalidraw
+            chmod 755 /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
 
             # 切换到部署目录
-            cd /apps/excalidraw
+            cd /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
 
             # 清理当前目录下所有文件及子目录
             rm -rf ./*
@@ -60,11 +60,11 @@ jobs:
           password: ${{ secrets.SERVER_PASSWD }}
           script: |
             # 切换到部署目录
-            cd /opt/1panel/apps/openresty/openresty/www/sites/
+            cd /opt/1panel/apps/openresty/openresty/www/sites/excalidraw
 
 
             # 解压新部署包 移除两层目录结构
-            tar -xzvf --strip-components=2 source.tar.gz
+            tar -xzvf  source.tar.gz
              mv build re-site
             # 清理临时文件（此时已无须单独删除旧版本文件）
             rm source.tar.gz
